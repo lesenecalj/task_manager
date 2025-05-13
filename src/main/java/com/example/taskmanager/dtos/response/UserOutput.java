@@ -2,6 +2,7 @@ package com.example.taskmanager.dtos.response;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -11,6 +12,7 @@ import lombok.*;
 @Builder
 public class UserOutput {
 
+    @NotNull()
     private Long id;
 
     @Email(message = "Email address isn't valid.")

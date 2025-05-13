@@ -17,6 +17,8 @@ public class TaskInput {
 
     private String description;
 
+    private Long userId;
+
     @NotNull(message = "Status is mandatory")
     private TaskStatus status;
 }
