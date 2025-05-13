@@ -8250,3 +8250,10 @@ Caused by: org.hibernate.DuplicateMappingException: Table [task_model] contains 
 2025-05-13 12:28:31 INFO  c.e.taskmanager.service.UserService - getUserByEmail lesenecalj@gmail.com
 2025-05-13 12:28:31 DEBUG o.s.security.web.FilterChainProxy - Secured GET /api/tasks/users/1
 2025-05-13 12:28:31 INFO  c.e.taskmanager.service.TaskService - getTaskByUserId by [1]
+2025-05-13 12:29:51 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-05-13 12:29:51 INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-05-13 12:29:51 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-05-13 12:29:51 WARN  o.s.b.f.s.DisposableBeanAdapter - Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: La base de données est déjà fermée (pour désactiver la fermeture automatique à l'arrêt de la VM, ajoutez "; DB_CLOSE_ON_EXIT = FALSE" à l'URL db)
+Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-05-13 12:29:51 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-05-13 12:29:51 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
