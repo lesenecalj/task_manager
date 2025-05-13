@@ -48,9 +48,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/api/auth/**").permitAll();
                     auth.requestMatchers("/api/users/signup").permitAll();
-                    if (isDevMode()) {
-                        auth.requestMatchers("/h2-console/**").permitAll();
-                    }
                     auth.anyRequest().authenticated();
                 })
                 .headers(headers -> headers
@@ -58,11 +55,6 @@ public class SecurityConfig {
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-    }
-
-    private boolean isDevMode() {
-        return environment.getActiveProfiles().length > 0 &&
-                environment.getActiveProfiles()[0].equals("dev");
     }
 
 }
