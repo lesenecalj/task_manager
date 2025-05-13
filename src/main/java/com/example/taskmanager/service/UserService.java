@@ -7,6 +7,7 @@ import com.example.taskmanager.model.UserModel;
 import com.example.taskmanager.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,6 +35,12 @@ public class UserService {
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         return userRepository.save(UserMapper.toModel(user));
+    }
+
+    public Optional<UserOutput> getUserById(Long id) {
+        logger.info("getTaskById by [{}]", id);
+        return userRepository.findById(id)
+                .map(UserMapper::toOutput);
     }
 
     public List<UserModel> getAllUsers(Pageable pageable) {

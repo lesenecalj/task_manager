@@ -36,15 +36,19 @@ public class TaskController {
         return taskService.getAllTasks(pageable);
     }
 
+    @GetMapping("/{id}")
+    public Optional<TaskOutput> getTaskById(@PathVariable Long id) {
+        return taskService.getTaskById(id);
+    }
+
     @GetMapping("/status/{status}")
     public List<TaskOutput> getTasksByStatus(@PathVariable TaskStatus status) {
         return taskService.getTasksByStatus(status);
     }
 
-
-    @GetMapping("/{id}")
-    public Optional<TaskOutput> getTaskById(@PathVariable Long id) {
-        return taskService.getTaskById(id);
+    @GetMapping("/users/{userId}")
+    public List<TaskOutput> getTasksByStatus(@PathVariable Long userId) {
+        return taskService.getTaskByUserId(userId);
     }
 
     @PostMapping
