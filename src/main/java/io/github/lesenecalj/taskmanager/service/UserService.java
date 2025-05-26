@@ -2,16 +2,15 @@ package io.github.lesenecalj.taskmanager.service;
 
 import io.github.lesenecalj.taskmanager.dtos.input.UserInput;
 import io.github.lesenecalj.taskmanager.dtos.response.UserOutput;
+import io.github.lesenecalj.taskmanager.exception.UserAlreadyExistsException;
 import io.github.lesenecalj.taskmanager.mapper.UserMapper;
 import io.github.lesenecalj.taskmanager.model.UserModel;
 import io.github.lesenecalj.taskmanager.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -56,7 +55,7 @@ public class UserService {
         logger.info("signUp with input: {}", userInput);
         Optional<UserModel> userFound = this.getUserByEmail(userInput.getEmail());
         if (userFound.isPresent()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email already in use");
+            throw new UserAlreadyExistsException("Email already in use");
         }
         UserModel userModel = this.createUser(userInput);
         return UserMapper.toOutput(userModel);

@@ -34,3 +34,6 @@ Thumbs.db
 *.tmp
 *.swp
 *~
+
+# Configuration application
+*.properties
