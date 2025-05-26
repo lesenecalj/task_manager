@@ -36,4 +36,4 @@ Thumbs.db
 *~
 
 # Configuration application
-*.properties
+src/main/resources/application.properties
