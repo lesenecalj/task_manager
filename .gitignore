@@ -34,3 +34,6 @@ Thumbs.db
 *.tmp
 *.swp
 *~
+
+# app configuration
+application.properties
